@@ -11,35 +11,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import java.util.ArrayList;
-
 public class ScrollingActivity extends AppCompatActivity {
 
-    private CenterLockHorizontalScrollview headerHolder;
 
-    ArrayList<String> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolling);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        list=new ArrayList<>();
-        list.add("time");
-        list.add("time");
-        list.add("time");
-        list.add("time");
-        list.add("time");
-        list.add("time");
-        list.add("time");
-        list.add("time");
-        list.add("time");
-        list.add("time");
-        headerHolder = (CenterLockHorizontalScrollview) findViewById(R.id.horizontalScrollView);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),1)); //  this is important line..
-        recyclerView.setAdapter(new NumberedAdapter(30));
-        headerHolder.setAdapter(getApplicationContext(), new CustomListAdapter(this, list));
+        recyclerView.setAdapter(new NumberedAdapter(this, 30));
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
